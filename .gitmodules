@@ -1,0 +1,3 @@
+[submodule "YAMLKit"]
+	path = YAMLKit
+	url = git@github.com:Watson1978/yamlkit.git
