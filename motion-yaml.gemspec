@@ -6,8 +6,8 @@ Gem::Specification.new do |gem|
   gem.version       = Version
   gem.authors       = ["Watson"]
   gem.email         = ["watson1978@gmail.com"]
-  gem.description   = %q{motion-yaml}
-  gem.summary       = %q{motion-yaml}
+  gem.description   = %q{motion-yaml provides methods to access "YAML Ain't Markup Language" for RubyMotion projects.}
+  gem.summary       = %q{motion-yaml provides methods to access "YAML Ain't Markup Language" for RubyMotion projects.}
   gem.homepage      = ""
 
   files = []
