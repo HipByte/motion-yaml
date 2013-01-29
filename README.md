@@ -16,10 +16,8 @@ $ sudo gem install motion-yaml
 
 1. Edit the `Rakefile` of your RubyMotion project and add the following require lines.
 
-```ruby
-require 'rubygems'
-require 'motion-yaml'
-```
+        require 'rubygems'
+        require 'motion-yaml'
 
 ## Methods
 
@@ -27,25 +25,19 @@ require 'motion-yaml'
 
 - Converts _obj_ to YAML.
 
-```ruby
-YAML.dump([{ 'a' => 'b' }, 'foo'])  #=> "- a: b\n- foo\n"
-```
+        YAML.dump([{ 'a' => 'b' }, 'foo'])  #=> "- a: b\n- foo\n"
 
 ### YAML.load(string)
 
 - Loads YAML from a _string_.
 
-```ruby
-YAML.load("- a: b\n- foo\n")  #=> [{"a"=>"b"}, "foo"]
-```
+        YAML.load("- a: b\n- foo\n")  #=> [{"a"=>"b"}, "foo"]
 
 ### NSObject#to_yaml
 
 - Converts _self_ to YAML.
 
-```ruby
-[1, 2, "foo"].to_yaml  #=> "- 1\n- 2\n- foo\n"
-```
+        [{ 'a' => 'b' }, 'foo'].to_yaml  #=> "- a: b\n- foo\n"
 
 ## Special thanks
 
