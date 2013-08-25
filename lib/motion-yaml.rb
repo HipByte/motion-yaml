@@ -26,8 +26,19 @@ unless defined?(Motion::Project::Config)
   raise "This file must be required within a RubyMotion project Rakefile."
 end
 
+def platform
+  Motion::Project::App.respond_to?(:template) ? Motion::Project::App.template : :ios
+end
+
 lib_dir_path = File.dirname(File.expand_path(__FILE__))
 Motion::Project::App.setup do |app|
   app.files.concat(Dir.glob(File.join(lib_dir_path, "project/**/*.rb")))
-  app.vendor_project(File.join(lib_dir_path, "YAMLKit"), :static)
+  case platform
+  when :ios
+    app.vendor_project(File.join(lib_dir_path, "YAMLKit"), :static,
+    	:products => ["libYAMLKit_iOS.a"])
+  when :osx
+    app.vendor_project(File.join(lib_dir_path, "YAMLKit"), :static,
+      :products => ["libYAMLKit_OSX.a"])
+  end
 end

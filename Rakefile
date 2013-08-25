@@ -26,9 +26,11 @@ task :default => :gem
 
 task :build do
   mkdir_p "lib/YAMLKit"
-  sh "cd YAMLKit; xcodebuild -arch armv6 -arch armv7 -arch armv7s"
-  sh "cd YAMLKit; xcodebuild -sdk iphonesimulator"
-  sh "lipo -create YAMLKit/build/Release-iphoneos/libYAMLKit.a YAMLKit/build/Release-iphonesimulator/libYAMLKit.a -output lib/YAMLKit/libYAMLKit.a"
+  sh "cd YAMLKit; xcodebuild -target YAMLKit_iOS -arch armv6 -arch armv7 -arch armv7s"
+  sh "cd YAMLKit; xcodebuild -target YAMLKit_iOS -sdk iphonesimulator"
+  sh "cd YAMLKit; xcodebuild -target YAMLKit_OSX"
+  sh "lipo -create YAMLKit/build/Release-iphoneos/libYAMLKit_iOS.a YAMLKit/build/Release-iphonesimulator/libYAMLKit_iOS.a -output lib/YAMLKit/libYAMLKit_iOS.a"
+  sh "cp YAMLKit/build/Release/libYAMLKit_OSX.a lib/YAMLKit/"
   sh "cp YAMLKit/src/*.h lib/YAMLKit/"
   sh "cp YAMLKit/YAMLKit_Prefix.pch lib/YAMLKit/"
 end
