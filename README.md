@@ -8,7 +8,7 @@ motion-yaml provides methods to access "YAML Ain't Markup Language" for RubyMoti
 
 ## Installation
 
-```
+```bash
 $ sudo gem install motion-yaml
 ```
 
@@ -16,8 +16,10 @@ $ sudo gem install motion-yaml
 
 1. Edit the `Rakefile` of your RubyMotion project and add the following require lines.
 
-        require 'rubygems'
-        require 'motion-yaml'
+```ruby
+require 'rubygems'
+require 'motion-yaml'
+```
 
 ## Methods
 
@@ -25,19 +27,25 @@ $ sudo gem install motion-yaml
 
 - Converts _obj_ to YAML.
 
-        YAML.dump([{ 'a' => 'b' }, 'foo'])  #=> "- a: b\n- foo\n"
+```ruby
+YAML.dump([{ 'a' => 'b' }, 'foo'])  #=> "- a: b\n- foo\n"
+```
 
 ### YAML.load(string)
 
 - Loads YAML from a _string_.
 
-        YAML.load("- a: b\n- foo\n")  #=> [{"a"=>"b"}, "foo"]
+```ruby
+YAML.load("- a: b\n- foo\n")  #=> [{"a"=>"b"}, "foo"]
+```
 
 ### NSObject#to_yaml
 
 - Converts _self_ to YAML.
 
-        [{ 'a' => 'b' }, 'foo'].to_yaml  #=> "- a: b\n- foo\n"
+```ruby
+[{ 'a' => 'b' }, 'foo'].to_yaml  #=> "- a: b\n- foo\n"
+```
 
 ## Special thanks
 
