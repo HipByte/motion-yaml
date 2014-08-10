@@ -24,6 +24,7 @@
 
 class YAML < YAMLKit
   def self.load(string)
+    string = string + "\n" if string[-1] != "\n"
     loadFromString(string)
   end
 
