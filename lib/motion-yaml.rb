@@ -34,11 +34,13 @@ lib_dir_path = File.dirname(File.expand_path(__FILE__))
 Motion::Project::App.setup do |app|
   app.files.concat(Dir.glob(File.join(lib_dir_path, "project/**/*.rb")))
   case platform
-  when :ios
+  when /ios/
     app.vendor_project(File.join(lib_dir_path, "YAMLKit"), :static,
     	:products => ["libYAMLKit_iOS.a"])
   when :osx
     app.vendor_project(File.join(lib_dir_path, "YAMLKit"), :static,
       :products => ["libYAMLKit_OSX.a"])
+  else
+    raise "Unknown platform"
   end
 end
