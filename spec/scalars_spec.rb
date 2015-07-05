@@ -10,29 +10,29 @@ describe "Scalars" do
 #     obj.should == "//||/||\n// ||  ||__\n"
 #   end
 
-#   it "In the plain scalar, newlines become spaces" do
-#     obj = YAML.load(<<END)
-# ---
-#   Mark McGwire's
-#   year was crippled
-#   by a knee injury.
-# END
-#     obj.should == "Mark McGwire's year was crippled by a knee injury."
-#   end
+  it "In the plain scalar, newlines become spaces" do
+    obj = YAML.load(<<END)
+---
+  Mark McGwire
+  year was crippled
+  by a knee injury.
+END
+    obj.should == "Mark McGwire year was crippled by a knee injury."
+  end
 
-#   it "Folded newlines are preserved for 'more indented' and blank lines" do
-#     obj = YAML.load(<<END)
-# >
-#  Sammy Sosa completed another
-#  fine season with great stats.
+  it "Folded newlines are preserved for 'more indented' and blank lines" do
+    obj = YAML.load(<<END)
+>
+ Sammy Sosa completed another
+ fine season with great stats.
 
-#    63 Home Runs
-#    0.288 Batting Average
+   63 Home Runs
+   0.288 Batting Average
 
-#  What a year!
-# END
-#     obj.should == "Sammy Sosa completed another fine season with great stats.\n\n  63 Home Runs\n  0.288 Batting Average\n\nWhat a year!\n"
-#   end
+ What a year!
+END
+    obj.should == "Sammy Sosa completed another fine season with great stats.\n\n  63 Home Runs\n  0.288 Batting Average\n\nWhat a year!\n"
+  end
 
   it "Indentation determines scope" do
     obj = YAML.load(<<END)
