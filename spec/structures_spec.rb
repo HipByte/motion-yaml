@@ -36,19 +36,19 @@ END
     obj.should == {"hr"=>["Mark McGwire", "Sammy Sosa"], "rbi"=>["Sammy Sosa", "Ken Griffey"]}
   end
 
-#   it " Node for 'Sammy Sosa' appears twice in this document" do
-#     obj = YAML.load(<<END)
-# ---å
-# hr:
-#   - Mark McGwire
-#   # Following node labeled SS
-#   - &SS Sammy Sosa
-# rbi:
-#   - *SS # Subsequent occurrence
-#   - Ken Griffey
-# END
-#     obj.should == {"hr"=>["Mark McGwire", "Sammy Sosa"], "rbi"=>["Sammy Sosa", "Ken Griffey"]}
-#   end
+  it " Node for 'Sammy Sosa' appears twice in this document" do
+    obj = YAML.load(<<END)
+---
+hr:
+  - Mark McGwire
+  # Following node labeled SS
+  - &SS Sammy Sosa
+rbi:
+  - *SS # Subsequent occurrence
+  - Ken Griffey
+END
+    obj.should == {"hr"=>["Mark McGwire", "Sammy Sosa"], "rbi"=>["Sammy Sosa", "Ken Griffey"]}
+  end
 
 #   it "Mapping between Sequences" do
 #     obj = YAML.load(<<END)
