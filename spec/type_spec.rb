@@ -9,3 +9,24 @@ END
   end
 
 end
+
+describe "Octal" do
+
+  it "should be converted to Fixnum object" do
+    obj = YAML.load("octal: 0644")
+    obj.should == {"octal"=>420}
+  end
+
+end
+
+describe "Hex" do
+
+  it "should be converted to Fixnum object" do
+    obj = YAML.load("hex: 0xff")
+    obj.should == {"hex"=>255}
+
+    obj = YAML.load("hex: 0xBEEF")
+    obj.should == {"hex"=>48879}
+  end
+
+end
