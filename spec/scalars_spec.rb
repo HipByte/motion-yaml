@@ -1,14 +1,14 @@
 describe "Scalars" do
 
-#   it "In literals, newlines are preserved" do
-#     obj = YAML.load(<<END)
-# # ASCII Art
-# --- |
-#   \//||\/||
-#   // ||  ||__
-# END
-#     obj.should == "//||/||\n// ||  ||__\n"
-#   end
+  it "In literals, newlines are preserved" do
+    obj = YAML.load(<<END)
+# ASCII Art
+--- |
+  \//||\/||
+  // ||  ||__
+END
+    obj.should == "//||/||\n// ||  ||__\n"
+  end
 
   it "In the plain scalar, newlines become spaces" do
     obj = YAML.load(<<END)
@@ -47,17 +47,14 @@ END
     obj.should == {"name"=>"Mark McGwire", "accomplishment"=>"Mark set a major league home run record in 1998.\n", "stats"=>"65 Home Runs\n0.278 Batting Average\n"}
   end
 
-#   it "Quoted Scalars" do
-#     obj = YAML.load(<<END)
-# unicode: "Sosa did fine.\u263A"
-# control: "\b1998\t1999\t2000\n"
-# hexesc:  "\x13\x10 is \r\n"
-
-# single: '"Howdy!" he cried.'
-# quoted: ' # not a ''comment''.'
-# tie-fighter: '|\-*-/|'
-# END
-#   end
+  it "Quoted Scalars" do
+    obj = YAML.load(<<END)
+single: '"Howdy!" he cried.'
+quoted: ' # not a ''comment''.'
+tie-fighter: '|\-*-/|'
+END
+    obj.should == {"single"=>"\"Howdy!\" he cried.", "quoted"=>" # not a 'comment'.", "tie-fighter"=>"|-*-/|"}
+  end
 
   it "Multi-line Flow Scalars" do
     obj = YAML.load(<<END)
