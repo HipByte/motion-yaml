@@ -27,6 +27,9 @@ describe "Hex" do
 
     obj = YAML.load("hex: 0xBEEF")
     obj.should == {"hex"=>48879}
+
+    obj = YAML.load("hex: xBEEF")
+    obj.should == {"hex"=>"xBEEF"}
   end
 
 end
