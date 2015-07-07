@@ -50,6 +50,9 @@ describe "Type Converting" do
     it "should be converted to Symbol object" do
       obj = YAML.load(':foo: 123')
       obj.should == {:foo=>123}
+
+      str = YAML.dump({:foo => 123})
+      str.should == ":foo: 123\n"
     end
   end
 end
