@@ -45,4 +45,11 @@ describe "Type Converting" do
       obj.should == {"hex"=>"xBEEF"}
     end
   end
+
+  describe "Symbol" do
+    it "should be converted to Symbol object" do
+      obj = YAML.load(':foo: 123')
+      obj.should == {:foo=>123}
+    end
+  end
 end
