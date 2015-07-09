@@ -127,7 +127,7 @@ describe "Type Converting" do
   end
 
   describe "Null" do
-    it "should be converted to True/False object" do
+    it "should be converted to nil" do
       obj = YAML.load('foo: ~')
       obj.should == {"foo"=>nil}
     end
