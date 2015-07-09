@@ -22,7 +22,11 @@
 # ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 # POSSIBILITY OF SUCH DAMAGE.
 
+# Special thanks to https://github.com/tenderlove/psych
 class YAMLKitScanner
+  # http://yaml.org/type/timestamp.html
+  TIME = /^-?\d{4}-\d{1,2}-\d{1,2}(?:[Tt]|\s+)\d{1,2}:\d\d:\d\d(?:\.\d*)?(?:\s*(?:Z|[-+]\d{1,2}:?(?:\d\d)?))?$/
+
   # http://yaml.org/type/float.html
   FLOAT = /^(?:[-+]?([0-9][0-9_,]*)?\.[0-9]*([eE][-+][0-9]+)?(?# base 10)
             |[-+]?[0-9][0-9_,]*(:[0-5]?[0-9])+\.[0-9_]*(?# base 60)
@@ -57,6 +61,8 @@ class YAMLKitScanner
       Integer(string.gsub(/_/, ''))
     when FLOAT
       Float(string.gsub(/_/, ''))
+    when TIME
+      self.parse_time(string)
     when /^(yes|y|true|on)$/i
       true
     when /^(no|n|false|off)$/i
@@ -65,4 +71,30 @@ class YAMLKitScanner
       nil
     end
   end
+
+  def self.parse_time string
+    date, time = *(string.split(/[ tT]/, 2))
+    (yy, m, dd) = date.match(/^(-?\d{4})-(\d{1,2})-(\d{1,2})/).captures.map { |x| x.to_i }
+    md = time.match(/(\d+:\d+:\d+)(?:\.(\d*))?\s*(Z|[-+]\d+(:\d\d)?)?/)
+
+    (hh, mm, ss) = md[1].split(':').map { |x| x.to_i }
+    us = (md[2] ? Rational("0.#{md[2]}") : 0) * 1000000
+
+    time = Time.utc(yy, m, dd, hh, mm, ss, us)
+
+    return time if 'Z' == md[3]
+    return Time.at(time.to_i, us) unless md[3]
+
+    tz = md[3].match(/^([+\-]?\d{1,2})\:?(\d{1,2})?$/)[1..-1].compact.map { |digit| Integer(digit, 10) }
+    offset = tz.first * 3600
+
+    if offset < 0
+      offset -= ((tz[1] || 0) * 60)
+    else
+      offset += ((tz[1] || 0) * 60)
+    end
+
+    Time.at((time - offset).to_i, us)
+  end
+
 end

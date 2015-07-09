@@ -115,6 +115,17 @@ describe "Type Converting" do
     end
   end
 
+  describe "Time" do
+    it "should be converted to Time object" do
+      time = Time.at(1420070400)
+      obj = YAML.load(time.to_s)
+      obj.should == time
+
+      obj = YAML.load('2015-01-01 00:00:00')
+      obj.should == time
+    end
+  end
+
   describe "Null" do
     it "should be converted to True/False object" do
       obj = YAML.load('foo: ~')
