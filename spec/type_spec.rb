@@ -87,6 +87,19 @@ describe "Type Converting" do
     end
   end
 
+  describe "Sexagesimal" do
+    it "should be converted to Fixnum object" do
+      obj = YAML.load("sexagesimal: 190:20:30")
+      obj.should == {"sexagesimal"=>685230}
+
+      obj = YAML.load("sexagesimal: -190:20:30")
+      obj.should == {"sexagesimal"=>-682770}
+
+      obj = YAML.load("sexagesimal: 30:00")
+      obj.should == {"sexagesimal"=>108000}
+    end
+  end
+
   describe "Boolean" do
     it "should be converted to True/False object" do
       obj = YAML.load('boolean: true')

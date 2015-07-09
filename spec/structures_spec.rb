@@ -19,7 +19,7 @@ player: Sammy Sosa
 action: strike (miss)
 ...
 END
-    obj.should == {"time"=>"20:03:20", "player"=>"Sammy Sosa", "action"=>"strike (miss)"}
+    obj.should == {"time"=>72200, "player"=>"Sammy Sosa", "action"=>"strike (miss)"}
   end
 
   it "Single Document with Two Comments" do
