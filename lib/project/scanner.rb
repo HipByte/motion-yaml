@@ -42,8 +42,6 @@ class YAMLKitScanner
   # Tokenize string returning the Ruby object
   # NOTE: This method will be called from Objective-C.
   def self.tokenize(string)
-    return nil if string.empty?
-
     case string
     when /^\+?\.inf$/i
       Float::INFINITY
@@ -67,8 +65,10 @@ class YAMLKitScanner
       true
     when /^(no|n|false|off)$/i
       false
-    else
+    when '~'
       nil
+    else
+      string
     end
   end
 
