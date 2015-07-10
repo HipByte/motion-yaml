@@ -1,46 +1,5 @@
 describe "Scalars" do
 
-#   it "Integers" do
-#     obj = YAML.load(<<END)
-# canonical: 12345
-# decimal: +12,345
-# sexagesimal: 3:25:45
-# octal: 014
-# hexadecimal: 0xC
-# END
-#     obj.should == {"canonical"=>12345, "decimal"=>12345, "sexagesimal"=>12345, "octal"=>12, "hexadecimal"=>12}
-#   end
-
-#   it "Floating Point" do
-#     obj = YAML.load(<<END)
-# canonical: 1.23015e+3
-# exponential: 12.3015e+02
-# sexagesimal: 20:30.15
-# fixed: 1,230.15
-# negative infinity: -.inf
-# not a number: .NaN
-# END
-#   end
-
-  it "Miscellaneous" do
-    obj = YAML.load(<<END)
-null: ~
-true: y
-false: n
-string: '12345'
-END
-    obj.should == {"null"=>nil, true=>true, false=>false, "string"=>"12345"}
-  end
-
-#   it "Timestamps" do
-#     obj = YAML.load(<<END)
-# canonical: 2001-12-15T02:59:43.1Z
-# iso8601: 2001-12-14t21:59:43.10-05:00
-# spaced: 2001-12-14 21:59:43.10 -5
-# date: 2002-12-14
-# END
-#   end
-
 #   it "Various Explicit Tags" do
 #     obj = YAML.load(<<END)
 # ---
