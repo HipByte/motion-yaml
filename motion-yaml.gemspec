@@ -1,5 +1,5 @@
 # -*- encoding: utf-8 -*-
-Version = "1.5"
+Version = "1.5.1"
 
 Gem::Specification.new do |gem|
   gem.name          = "motion-yaml"
