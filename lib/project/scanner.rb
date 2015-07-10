@@ -34,10 +34,10 @@ class YAMLKitScanner
             |\.(nan|NaN|NAN)(?# not a number))$/x
 
   # http://yaml.org/type/int.html
-  INTEGER = /^(?:[-+]?0b[0-1_]+          (?# base 2)
-                |[-+]?0[0-7_]+           (?# base 8)
-                |[-+]?(?:0|[1-9][0-9_]*) (?# base 10)
-                |[-+]?0x[0-9a-fA-F_]+    (?# base 16))$/x
+  INTEGER = /^(?:[-+]?0b[0-1_,]+          (?# base 2)
+                |[-+]?0[0-7_,]+           (?# base 8)
+                |[-+]?(?:0|[1-9][0-9_,]*) (?# base 10)
+                |[-+]?0x[0-9a-fA-F_,]+    (?# base 16))$/x
 
   # Tokenize string returning the Ruby object
   # NOTE: This method will be called from Objective-C.
@@ -68,9 +68,9 @@ class YAMLKitScanner
       end
       i
     when INTEGER
-      Integer(string.gsub(/_/, ''))
+      Integer(string.gsub(/[,_]/, ''))
     when FLOAT
-      Float(string.gsub(/_/, ''))
+      Float(string.gsub(/[,_]/, ''))
     when TIME
       self.parse_time(string)
     when /^(yes|y|true|on)$/i
