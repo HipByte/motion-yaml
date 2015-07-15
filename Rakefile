@@ -49,8 +49,54 @@ task :clean do
   sh "rm -f motion-yaml*.gem"
 end
 
-desc "Run spec"
-task :spec => :build do
-  require './spec'
-  Rake::Task['spec:simulator'].invoke
+namespace :spec do
+  #--------------
+  # for simulator
+  #--------------
+  desc "Run the test/spec suite on the simulator"
+  task :simulator do
+    Rake::Task['clean'].invoke
+    Rake::Task['build'].invoke
+
+    require './spec'
+    Rake::Task['spec:simulator'].invoke
+  end
+
+  desc "Run the test/spec suite with i386 on the simulator"
+  task :"simulator:i386" do 
+    sh "rake spec:simulator ARCH=i386"
+  end
+
+  desc "Run the test/spec suite with x86_64 on the simulator"
+  task :"simulator:x86_64" do 
+    sh "rake spec:simulator ARCH=x86_64"
+  end
+
+  desc "Run the test/spec suite with all archs on the simulator"
+  task :"simulator:all" do 
+    sh "rake spec:simulator ARCH=i386"
+    sh "rake spec:simulator ARCH=x86_64"
+  end
+
+  #--------------
+  # for device
+  #--------------
+  desc "Run the test/spec suite on the device"
+  task :device do
+    Rake::Task['clean'].invoke
+    Rake::Task['build'].invoke
+
+    require './spec'
+    Rake::Task['spec:device'].invoke
+  end
+
+  desc "Run the test/spec suite with armv7 on the device"
+  task :"device:armv7" do
+    sh "rake spec:device ARCH=armv7"
+  end
+
+  desc "Run the test/spec suite with arm64 on the device"
+  task :"device:arm64" do
+    sh "rake spec:device ARCH=arm64"
+  end
 end
