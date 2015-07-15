@@ -15,7 +15,7 @@ END
     obj = YAML.load(<<END)
 canonical: 1.23015e+3
 exponential: 12.3015e+02
-sexagesimal: 20:30.15
+sexagesimal: 20:30.5
 fixed: 1,230.15
 negative infinity: -.inf
 not a number: .NaN
@@ -23,7 +23,7 @@ END
   obj.should == {
     "canonical"=>1230.15,
     "exponential"=>1230.15,
-    "sexagesimal"=>73809.0,
+    "sexagesimal"=>73830.0,
     "fixed"=>1230.15,
     "negative infinity"=>-Float::INFINITY,
     "not a number"=>Float::NAN
