@@ -30,7 +30,7 @@ Motion::Project::App.setup do |app|
   app.name = 'TestYAML'
 
   if ENV['ARCH']
-  	platform = (ENV['ARCH'] =~ /arm/) ? 'iPhoneOS' : 'iPhoneSimulator'
+    platform = (ENV['ARCH'] =~ /arm/) ? 'iPhoneOS' : 'iPhoneSimulator'
     app.archs[platform] = [ENV['ARCH']]
   end
 

@@ -63,17 +63,17 @@ namespace :spec do
   end
 
   desc "Run the test/spec suite with i386 on the simulator"
-  task :"simulator:i386" do 
+  task :"simulator:i386" do
     sh "rake spec:simulator ARCH=i386"
   end
 
   desc "Run the test/spec suite with x86_64 on the simulator"
-  task :"simulator:x86_64" do 
+  task :"simulator:x86_64" do
     sh "rake spec:simulator ARCH=x86_64"
   end
 
   desc "Run the test/spec suite with all archs on the simulator"
-  task :"simulator:all" do 
+  task :"simulator:all" do
     sh "rake spec:simulator ARCH=i386"
     sh "rake spec:simulator ARCH=x86_64"
   end
@@ -100,3 +100,4 @@ namespace :spec do
     sh "rake spec:device ARCH=arm64"
   end
 end
+
