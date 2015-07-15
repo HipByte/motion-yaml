@@ -23,7 +23,7 @@
 # POSSIBILITY OF SUCH DAMAGE.
 
 # Special thanks to https://github.com/tenderlove/psych
-class YAMLKitScanner
+class YKParser
   # http://yaml.org/type/timestamp.html
   TIME = /^-?\d{4}-\d{1,2}-\d{1,2}(?:[Tt]|\s+)\d{1,2}:\d\d:\d\d(?:\.\d*)?(?:\s*(?:Z|[-+]\d{1,2}:?(?:\d\d)?))?$/
 
@@ -41,7 +41,7 @@ class YAMLKitScanner
 
   # Tokenize string returning the Ruby object
   # NOTE: This method will be called from Objective-C.
-  def self.tokenize(string)
+  def tokenize(string)
     case string
     when /^\+?\.inf$/i
       Float::INFINITY
@@ -84,7 +84,7 @@ class YAMLKitScanner
     end
   end
 
-  def self.parse_time string
+  def parse_time(string)
     date, time = *(string.split(/[ tT]/, 2))
     (yy, m, dd) = date.match(/^(-?\d{4})-(\d{1,2})-(\d{1,2})/).captures.map { |x| x.to_i }
     md = time.match(/(\d+:\d+:\d+)(?:\.(\d*))?\s*(Z|[-+]\d+(:\d\d)?)?/)
