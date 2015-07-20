@@ -101,3 +101,5 @@ namespace :spec do
   end
 end
 
+desc "Same as 'spec:simulator'"
+task :spec => :"spec:simulator"
