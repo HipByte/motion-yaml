@@ -23,7 +23,7 @@
 # POSSIBILITY OF SUCH DAMAGE.
 
 # Special thanks to https://github.com/tenderlove/psych
-class YKParser
+class YKScanner
   # http://yaml.org/type/timestamp.html
   TIME = /^-?\d{4}-\d{1,2}-\d{1,2}(?:[Tt]|\s+)\d{1,2}:\d\d:\d\d(?:\.\d*)?(?:\s*(?:Z|[-+]\d{1,2}:?(?:\d\d)?))?$/
 
