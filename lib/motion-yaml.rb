@@ -22,9 +22,15 @@
 # ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 # POSSIBILITY OF SUCH DAMAGE.
 
+
+
 unless defined?(Motion::Project::Config)
   raise "This file must be required within a RubyMotion project Rakefile."
 end
+
+
+require 'motion-require'
+Motion::Require.all(Dir.glob(File.expand_path('../project/yaml.rb', __FILE__)))
 
 def platform
   Motion::Project::App.respond_to?(:template) ? Motion::Project::App.template : :ios
@@ -38,7 +44,7 @@ Motion::Project::App.setup do |app|
   case platform
   when /ios/
     app.vendor_project(File.join(lib_dir_path, "YAMLKit"), :static,
-    	:products => ["libYAMLKit_iOS.a"])
+            :products => ["libYAMLKit_iOS.a"])
   when :osx
     app.vendor_project(File.join(lib_dir_path, "YAMLKit"), :static,
       :products => ["libYAMLKit_OSX.a"])

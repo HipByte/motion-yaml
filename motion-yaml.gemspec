@@ -14,6 +14,7 @@ Gem::Specification.new do |gem|
   files = []
   files << 'README.md'
   files.concat(Dir.glob('lib/**/*'))
+  gem.add_runtime_dependency("motion-require", ">= 0.0.6")
   gem.files         = files
   gem.require_paths = ["lib"]
 end
