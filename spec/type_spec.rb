@@ -143,6 +143,9 @@ describe "Type Converting" do
     it "should be converted to nil" do
       obj = YAML.load('foo: ~')
       obj.should == {"foo"=>nil}
+
+      obj = YAML.load('months: [~, Jan, Feb]')
+      obj.should == {"months"=>[nil, "Jan", "Feb"]}
     end
   end
 
