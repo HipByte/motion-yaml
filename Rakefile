@@ -116,6 +116,33 @@ namespace :spec do
   task :"device:tvos" do
     sh "rake spec:device PLATFORM=tvos"
   end
+
+  #--------------
+  # for OS X
+  #--------------
+  task :osx do
+    Rake::Task['clean'].invoke
+    Rake::Task['build'].invoke
+
+    require './spec'
+    Rake::Task['spec'].invoke
+  end
+
+  desc "Run the test/spec suite with i386 on OS X"
+  task :"osx:i386" do
+    sh "rake spec PLATFORM=osx ARCH=i386"
+  end
+
+  desc "Run the test/spec suite with x86_64 on OS X"
+  task :"osx:x86_64" do
+    sh "rake spec PLATFORM=osx ARCH=x86_64"
+  end
+
+  desc "Run the test/spec suite with all archs on OS X"
+  task :"osx:all" do
+    sh "rake spec PLATFORM=osx ARCH=i386"
+    sh "rake spec PLATFORM=osx ARCH=x86_64"
+  end
 end
 
 desc "Same as 'spec:simulator'"
