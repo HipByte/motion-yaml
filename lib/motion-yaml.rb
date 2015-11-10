@@ -39,6 +39,9 @@ Motion::Project::App.setup do |app|
   when /ios/
     app.vendor_project(File.join(lib_dir_path, "YAMLKit"), :static,
     	:products => ["libYAMLKit_iOS.a"])
+  when :tvos
+    app.vendor_project(File.join(lib_dir_path, "YAMLKit"), :static,
+      :products => ["libYAMLKit_tvOS.a"])
   when :osx
     app.vendor_project(File.join(lib_dir_path, "YAMLKit"), :static,
       :products => ["libYAMLKit_OSX.a"])
