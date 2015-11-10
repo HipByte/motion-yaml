@@ -23,7 +23,8 @@
 # POSSIBILITY OF SUCH DAMAGE.
 
 $:.unshift("/Library/RubyMotion/lib")
-require 'motion/project'
+platform = ENV['PLATFORM'] || 'ios'
+require "motion/project/template/#{platform}"
 require './lib/motion-yaml'
 
 Motion::Project::App.setup do |app|

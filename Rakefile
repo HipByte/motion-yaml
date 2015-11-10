@@ -56,7 +56,6 @@ namespace :spec do
   #--------------
   # for simulator
   #--------------
-  desc "Run the test/spec suite on the simulator"
   task :simulator do
     Rake::Task['clean'].invoke
     Rake::Task['build'].invoke
@@ -65,26 +64,36 @@ namespace :spec do
     Rake::Task['spec:simulator'].invoke
   end
 
-  desc "Run the test/spec suite with i386 on the simulator"
-  task :"simulator:i386" do
-    sh "rake spec:simulator ARCH=i386"
+  desc "Run the test/spec suite on iOS simulator"
+  task :"simulator:ios" do
+    sh "rake spec:simulator PLATFORM=ios"
   end
 
-  desc "Run the test/spec suite with x86_64 on the simulator"
-  task :"simulator:x86_64" do
-    sh "rake spec:simulator ARCH=x86_64"
+  desc "Run the test/spec suite with i386 on iOS simulator"
+  task :"simulator:ios:i386" do
+    sh "rake spec:simulator PLATFORM=ios ARCH=i386"
   end
 
-  desc "Run the test/spec suite with all archs on the simulator"
-  task :"simulator:all" do
-    sh "rake spec:simulator ARCH=i386"
-    sh "rake spec:simulator ARCH=x86_64"
+  desc "Run the test/spec suite with x86_64 on iOS simulator"
+  task :"simulator:ios:x86_64" do
+    sh "rake spec:simulator PLATFORM=ios ARCH=x86_64"
+  end
+
+  desc "Run the test/spec suite with all archs on iOS simulator"
+  task :"simulator:ios:all" do
+    sh "rake spec:simulator PLATFORM=ios ARCH=i386"
+    sh "rake spec:simulator PLATFORM=ios ARCH=x86_64"
+  end
+
+  desc "Run the test/spec suite on tvOS simulator"
+  task :"simulator:tvOS" do
+    sh "rake spec:simulator PLATFORM=tvos"
   end
 
   #--------------
   # for device
   #--------------
-  desc "Run the test/spec suite on the device"
+  desc "Run the test/spec suite on iOS device"
   task :device do
     Rake::Task['clean'].invoke
     Rake::Task['build'].invoke
@@ -93,14 +102,19 @@ namespace :spec do
     Rake::Task['spec:device'].invoke
   end
 
-  desc "Run the test/spec suite with armv7 on the device"
-  task :"device:armv7" do
-    sh "rake spec:device ARCH=armv7"
+  desc "Run the test/spec suite with armv7 on iOS device"
+  task :"device:ios:armv7" do
+    sh "rake spec:device PLATFORM=ios ARCH=armv7"
   end
 
-  desc "Run the test/spec suite with arm64 on the device"
-  task :"device:arm64" do
-    sh "rake spec:device ARCH=arm64"
+  desc "Run the test/spec suite with arm64 on iOS device"
+  task :"device:ios:arm64" do
+    sh "rake spec:device PLATFORM=ios ARCH=arm64"
+  end
+
+  desc "Run the test/spec suite on tvOS device"
+  task :"device:tvos" do
+    sh "rake spec:device PLATFORM=tvos"
   end
 end
 
