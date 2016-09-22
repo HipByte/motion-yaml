@@ -41,7 +41,7 @@ class YKScanner
 
   # Tokenize string returning the Ruby object
   # NOTE: This method will be called from Objective-C.
-  def tokenize(string)
+  def tokenize_from(string)
     case string
     when /^\+?\.inf$/i
       Float::INFINITY
