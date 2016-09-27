@@ -1,5 +1,7 @@
 # motion-yaml
 
+[![Build Status](https://travis-ci.org/HipByte/motion-yaml.svg?branch=master)](https://travis-ci.org/HipByte/motion-yaml)
+
 motion-yaml provides methods to access "YAML Ain't Markup Language" for RubyMotion projects.
 
 ## Requirements
