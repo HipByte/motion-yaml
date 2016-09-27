@@ -121,7 +121,7 @@ namespace :spec do
   # for OS X
   #--------------
   task :osx do
-    Rake::Task['clean'].invoke
+    sh "rm -rf build"
     Rake::Task['build'].invoke
 
     require './spec'
