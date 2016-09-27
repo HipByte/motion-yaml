@@ -57,7 +57,7 @@ namespace :spec do
   # for simulator
   #--------------
   task :simulator do
-    Rake::Task['clean'].invoke
+    sh "rm -rf build"
     Rake::Task['build'].invoke
 
     require './spec'
@@ -95,7 +95,7 @@ namespace :spec do
   #--------------
   desc "Run the test/spec suite on iOS device"
   task :device do
-    Rake::Task['clean'].invoke
+    sh "rm -rf build"
     Rake::Task['build'].invoke
 
     require './spec'
