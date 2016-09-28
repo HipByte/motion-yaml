@@ -7,6 +7,7 @@ before_install:
   - sudo chown -R travis ~/Library/RubyMotion
   - sudo mkdir -p ~/Library/RubyMotion/build
   - sudo chown -R travis ~/Library/RubyMotion/build
+  - brew install axel
   - sudo motion update 
 script:
   - rake spec:osx:all
