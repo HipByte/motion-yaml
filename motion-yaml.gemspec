@@ -9,7 +9,7 @@ Gem::Specification.new do |gem|
   gem.description   = %q{motion-yaml provides methods to access "YAML Ain't Markup Language" for RubyMotion projects.}
   gem.summary       = %q{motion-yaml provides methods to access "YAML Ain't Markup Language" for RubyMotion projects.}
   gem.homepage      = "https://github.com/HipByte/motion-yaml"
-  gem.license       = 'MIT'
+  gem.license       = 'BSD-2-Clause'
 
   files = []
   files << 'README.md'
